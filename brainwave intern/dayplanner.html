@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day Planner - Hover Dropdowns</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- FIXED TOP TOOLBAR -->
+  <header>
+    <div class="toolbar-container">
+      <!-- Logo -->
+      <div class="logo">Day Planner</div>
+      <!-- Navigation Menu -->
+      <nav class="toolbar-nav">
+        <div class="nav-item">
+          File
+          <div class="dropdown">
+            <a href="#" onclick="newPlanner()">New</a>
+            <a href="#" onclick="savePlanner()">Save</a>
+            <a href="#" onclick="openPlanner()">Open</a>
+            <a href="#" onclick="exitPlanner()">Exit</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          Edit
+          <div class="dropdown">
+            <a href="#" onclick="undoAction()">Undo</a>
+            <a href="#" onclick="redoAction()">Redo</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          Settings
+          <div class="dropdown">
+            <a href="#" onclick="changeTheme()">Toggle Theme</a>
+            <a href="#" onclick="aboutPlanner()">About</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN DAY PLANNER CONTENT -->
+  <div class="container">
+    <!-- Task Form View -->
+    <div id="taskForm">
+      <h1>Day Planner</h1>
+      <input type="text" id="taskInput" placeholder="Enter Task">
+      <input type="time" id="timeInput">
+      <button onclick="addTask()">Add Task</button>
+      <button onclick="showSchedule()">View Schedule</button>
+    </div>
+
+    <!-- Task Schedule View -->
+    <div id="taskSchedule">
+      <h1>Task Schedule</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Task</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="taskTableBody"></tbody>
+      </table>
+      <button class="back-button" onclick="showTaskForm()">Back</button>
+    </div>
+  </div>
+
+  <script src="tasks.js"></script>
+</body>
+</html>

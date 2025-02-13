@@ -1,0 +1,249 @@
+/* RESET & GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    color: #333;
+    padding-top: 70px; /* space for fixed toolbar */
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  /* DARK THEME STYLES */
+  .dark-theme {
+    background: #2c3e50;
+    color: #ecf0f1;
+  }
+  .dark-theme header {
+    background: #3b5770;
+  }
+  .dark-theme .logo {
+    color: #b3b6ff;
+  }
+  .dark-theme nav.toolbar-nav .nav-item {
+    color: #ecf0f1;
+  }
+  .dark-theme .dropdown {
+    background: #444;
+  }
+  .dark-theme .dropdown a {
+    color: #ecf0f1;
+  }
+  .dark-theme .container {
+    background: #34495e;
+    color: #ecf0f1;
+  }
+  .dark-theme #taskForm input,
+  .dark-theme #taskForm input:focus {
+    background: #2c3e50;
+    color: #ecf0f1;
+    border-color: #7f8c8d;
+  }
+  
+  /* ===== FIXED TOP TOOLBAR ===== */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+  .toolbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+  /* Left: Logo */
+  .logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding-right: 90px;
+    color: #3c40c6;
+  }
+  /* Center: Navigation (File, Edit, Settings) */
+  nav.toolbar-nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex: 1;
+    justify-content: left;
+  }
+  /* Set nav items to fill the toolbar height */
+  nav.toolbar-nav .nav-item {
+    position: relative;
+    font-weight: 500;
+    cursor: pointer;
+    color: #333;
+    /* Using a larger line-height to help vertical centering */
+    line-height: 15px;
+  }
+  nav.toolbar-nav .nav-item:hover {
+    opacity: 0.85;
+  }
+  /* Hover-based Dropdown (positioned immediately below the nav item) */
+  .nav-item .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%; /* immediately below the nav item */
+    left: 0;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-width: 150px;
+    z-index: 1001;
+  }
+  .nav-item:hover .dropdown {
+    display: block;
+  }
+  .dropdown a {
+    display: block;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    color: #333;
+    transition: background 0.2s;
+  }
+  .dropdown a:hover {
+    background: #f2f2f2;
+  }
+  
+  /* ===== MAIN CONTENT (DAY PLANNER) ===== */
+  .container {
+    background: #fff;
+    max-width: 600px;
+    width: 90%;
+    /* Reduced margin-top to lessen the gap between toolbar and container */
+    margin: 10px auto 40px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    animation: slideIn 0.8s ease-out;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  @keyframes slideIn {
+    from { transform: translateY(30px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* ===== TASK FORM STYLES ===== */
+  #taskForm input[type="text"],
+  #taskForm input[type="time"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+  }
+  #taskForm input[type="text"]:focus,
+  #taskForm input[type="time"]:focus {
+    border-color: #3498db;
+    outline: none;
+  }
+  #taskForm button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #3498db;
+    color: #fff;
+    font-size: 16px;
+    margin: 8px 0;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  #taskForm button:hover {
+    background: #2980b9;
+    transform: scale(1.02);
+  }
+  
+  /* ===== TASK SCHEDULE STYLES ===== */
+  #taskSchedule table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  #taskSchedule th,
+  #taskSchedule td {
+    padding: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+  }
+  #taskSchedule tr:hover {
+    background: #f9f9f9;
+  }
+  .fade-in {
+    animation: fadeIn 0.5s ease forwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  /* Transitions for toggling views */
+  #taskSchedule,
+  #taskForm {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  #taskSchedule {
+    opacity: 0;
+    transform: translateX(50px);
+    display: none;
+  }
+  #taskSchedule.active {
+    opacity: 1;
+    transform: translateX(0);
+    display: block;
+  }
+  
+  /* ===== BACK BUTTON STYLES ===== */
+/* ===== BACK BUTTON STYLES ===== */
+.back-button {
+    display: block;       /* Make the button a block element */
+    margin: 0 auto;       /* Center it horizontally */
+    background: #3c8fe7 !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 12px !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    transition: background 0.3s ease, transform 0.3s ease !important;
+    width: 20%;
+  }
+  .back-button:hover {
+    background: #1a6cbd !important;
+    transform: scale(1.02) !important;
+  }
+  /* ===== DELETE BUTTON STYLES ===== */
+.delete-button {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .delete-button:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+  }
+  
+  
