@@ -1,1 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>My Shop</h1>
+        <div id="cart">🛒 Cart (<span id="cart-count">0</span>)</div>
+    </header>
+    <main>
+        <div class="product" data-id="1" data-price="499">
+            <img src="product1.jpg" alt="Product 1">
+            <h2>Product 1</h2>
+            <p>$499</p>
+            <button onclick="addToCart(1, 499, 'Product 1')">Add to Cart</button>
+        </div>
+        <div class="product" data-id="2" data-price="299">
+            <img src="product2.jpg" alt="Product 2">
+            <h2>Product 2</h2>
+            <p>$299</p>
+            <button onclick="addToCart(2, 299, 'Product 2')">Add to Cart</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
 
